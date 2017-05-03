@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Neuton" rel="stylesheet">
+  <link rel="stylesheet" href="styles/normal.css">
+  <link rel="stylesheet" href="styles/styles.css">
+  <title>NFL Arrests</title>
+</head>
+
+<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.js"></script>
+<script type="text/javascript" src="app.js"></script>
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<html>
+
+<script>
+  function getParameterByName(name, url) {
+    if (!url) {
+      url = window.location.href;
+    }
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+      results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    var teamName = (decodeURIComponent(results[2].replace(/\+/g, " ")));
+    var url = 'http://NflArrest.com/api/v1/team/topCrimes/' + teamName;
+    var chartArray = [];
+    $.getJSON(url, function (data) {
+      $.each(data, function () {
+        var cat = this.Category;
+        var acount = this.arrest_count;
+        var chartObject = {
+          name: cat,
+          y: Number(acount)
+        };
+        chartArray.push(chartObject)
+      })
+      $(".graph").html(
+        '<div id="container"></div>')
+
+      // CHART //
+      Highcharts.chart('container', {
+        chart: {
+          plotBackgroundColor: null,
+          plotBorderWidth: null,
+          plotShadow: false,
+          type: 'pie',
+          options3d: {
+            enabled: true,
+            alpha: 0,
+            beta: 0
+          }
+        },
+        title: {
+          text: 'Top Crimes'
+        },
+        tooltip: {
+          pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+          pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+              enabled: true,
+              format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+              style: {
+                color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+              }
+            }
+          }
+        },
+        series: [{
+          name: 'Brands',
+          colorByPoint: true,
+          data: chartArray
+        }]
+      });
+    });
+
+
+    // ARREST DETAILS //
+
+    var url = 'http://NflArrest.com/api/v1/team/arrests/' + teamName;
+
+    $.getJSON(url, function (data) {
+      $.each(data, function () {
+        var name = this.Name;
+        var date = this.Date;
+        var description = this.Description;
+        $('.details').append(date + ' - ' + name + ' - ' + description).append('<br>');
+      })
+    })
+  };
+
+  var team = getParameterByName('team');
+</script>
+
+<header class="team_header">
+  <h6>
+    <a href="javascript:history.back()"><img src="images/back.png"></a>
+  </h6>
+</header>
+
+<section class="results">
+  <div class="graph"></div>
+</section>
+<section class="teamDetails">
+<div class="details"></div>
+</section>
+
+
+
+</html>
