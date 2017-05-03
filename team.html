@@ -93,7 +93,7 @@
         var name = this.Name;
         var date = this.Date;
         var description = this.Description;
-        $('.details').append(date + ' - ' + name + ' - ' + description).append('<br>');
+        $('.details').append('<p class="indivArrest"><strong>'+date + '</strong> - ' + name + ' - ' + description+'</p>');
       })
     })
   };
@@ -109,9 +109,7 @@
 
 <section class="results">
   <div class="graph"></div>
-</section>
-<section class="teamDetails">
-<div class="details"></div>
+  <div class="details"></div>
 </section>
 
 

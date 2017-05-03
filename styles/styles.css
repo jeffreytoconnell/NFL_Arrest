@@ -1,6 +1,7 @@
 body {
   background: url("../images/prison.jpg") no-repeat center fixed;
   background-size: cover;
+  margin: 0 auto;
 }
 
 header {
@@ -9,16 +10,20 @@ header {
 }
 
 h1 {
-  display: flex;
   width: 100%;
-  align-content: center;
+  text-align: center;
 }
 
 h1 img {
   height: 100%;
   margin: auto;
 }
+#allTeams {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 5%;
 
+}
 #leagues {
   display: inline-flex;
   width: 100%;
@@ -28,9 +33,10 @@ h1 img {
 #AFC,
 #NFC {
   display: inline-flex;
-  width: 50%;
+  width: 100%;
   height: 100px;
   margin: auto;
+
 }
 
 #AFC img,
@@ -42,17 +48,17 @@ h1 img {
 }
 
 .containerAFC {
-  width: 45%;
+  width: 50%;
   margin: auto;
-  padding-left: 90px;
   float: left;
+  background: rgba(198,12,48,0.1);
 }
 
 .containerNFC {
-  width: 45%;
+  width: 50%;
   margin: auto;
   float: left;
-  padding-left: 25px;
+  background: rgba(0,59,102,0.1);
 }
 
 .logo-box {
@@ -63,15 +69,15 @@ h1 img {
   height: 100px;
 }
 
+
+
 .results {
   background-color: white;
-  display: inline-flex;
   width: 100%;
   margin: auto;
 }
 
 .top_players {
-  display: inline-flex;
   width: 30%;
   height: 300px;
   font-size: 14px;
@@ -82,37 +88,32 @@ h1 img {
 }
 
 .graph {
-  display: inline-flex;
   width: 70%;
   height: 400px;
-  margin: 0 25%;
+  margin: 0 15%;
   font-size: 14px;
   color: black;
 }
 
 .details {
-  display: inline-flex;
-  width: 80%;
-  height: 280px;
-  margin: 0 10%;
+  width: 94%;
+  margin: 0 2%;
   font-size: 14px;
-  padding: 0px 15px 0px 0px;
+  padding: 25px 15px 25px 0px;
   color: black;
   text-decoration: none;
-  overflow: hidden;
-  overflow-y: scroll;
 }
 
 .team_header {
-  background-image: url('../images/prison.jpg');
   display: inline-flex;
-  height: 140px;
+  height: 100px;
 }
 
 .team_header img {
   height: 50px;
-  width: 50px;
-  margin-left: 20px;
+  width: 80px;
+  margin-left: 25px;
+  margin-top: 10px;
 }
 
 .description {
@@ -127,186 +128,15 @@ h1 img {
   background-color: white;
 }
 
-@media only screen and (max-width: 568px) {
-  #leagues,
-  #AFC,
-  #NFC {
-    display: inline-flex;
-  }
-  .description {
-    font-size: 12px;
-  }
-  h1 img {
-    width: 50%;
-    margin: auto;
-  }
-  #leagues {
-    display: inline-flex;
-    width: 100%;
-    height: 100px;
-  }
-  #AFC img,
-  #NFC img {
-    display: inline-flex;
-    height: 35px;
-    margin: auto;
-    padding-bottom: -25px;
-  }
-  .containerAFC {
-    display: inline-block;
-    width: 40%;
-    margin: auto;
-    padding-left: 35px;
-  }
-  .containerNFC {
-    display: inline-block;
-    width: 40%;
-    margin: auto;
-  }
-  .logo-box {
-    align-content: center;
-    margin: auto;
-    width: 50px;
-    height: 65px;
-  }
-  .results {
-    display: inline-flex;
-    width: 100%;
-    height: 0px;
-    margin: auto;
-  }
-  .top_players {
-    width: 0px;
-  }
-  .graph {
-    display: block;
-    width: 100%;
-    height: 400px;
-    font-size: 14px;
-    color: black;
-  }
-  .details {
-    display: block;
-    width: 90%;
-    height: 580px;
-    font-size: 12px;
-    margin-left: 20px;
-    margin-right: 20px;
-    color: black;
-    text-decoration: none;
-    overflow: hidden;
-    overflow-y: scroll;
-  }
-  .teamDetails {
-    background-color: white;
-    margin: auto;
-    width: 538px;
-  }
-  .team_header {
-    display: block;
-    height: 140px;
-    width: 0px;
-  }
-  .team_header img {
-    height: 30px;
-    width: 30px;
-    margin-left: 10px;
-  }
-  .teamDetails {
-    background-color: white;
-  }
+.highcharts-credits {
+  display: none;
 }
 
-@media only screen and (min-width: 569px) and (max-width: 1170px) {
-  body {
-    display: block;
-    width: 100%;
-    margin: auto;
-  }
-  #leagues,
-  #AFC,
-  #NFC {
-    display: inline-flex;
-  }
-  .description {
-    font-size: 22px;
-  }
-  h1 img {
-    width: 50%;
-    margin: auto;
-  }
-  #leagues {
-    display: inline-flex;
-    width: 100%;
-    height: 100px;
-  }
-  #AFC img,
-  #NFC img {
-    display: inline-flex;
-    height: 75px;
-    margin: auto;
-    padding-bottom: -25px;
-  }
-  .containerAFC {
-    display: inline-block;
-    width: 40%;
-    padding-left: 55px;
-  }
-  .containerNFC {
-    display: inline-block;
-    width: 40%;
-    margin-left: 30px;
-  }
-  .logo-box {
-    align-content: center;
-    margin: auto;
-    width: 70px;
-    height: 95px;
-  }
-  .results {
-    display: inline-flex;
-    width: 100%;
-    height: 0px;
-    margin: auto;
-  }
-  .top_players {
-    width: 0px;
-  }
+/*UNDER 800*/
+@media only screen and (max-width: 800px) {
+
   .graph {
-    display: block;
-    /*width: 768px;*/
-    width: 100%;
-    height: 0px;
-    margin-top: -65px;
-    font-size: 14px;
-    color: black;
-  }
-  .team_header {
-    display: block;
-    height: 140px;
-    width: 0px;
-  }
-  .team_header img {
-    height: 30px;
-    width: 30px;
-    margin-left: 10px;
-  }
-  .details {
-    display: block;
-    width: 90%;
-    height: 580px;
-    font-size: 12px;
-  
-    margin-left: 20px;
-    margin-right: 20px;
-    color: black;
-    text-decoration: none;
-    overflow: hidden;
-    overflow-y: scroll;
-  }
-  .teamDetails {
-    background-color: white;
-    margin: auto;
-    width: 90%;
+    width: 94%;
+    margin: 0 2%;
   }
 }

@@ -1,4 +1,4 @@
-  function leagueCrimes(searchTerm) {
+ function leagueCrimes(searchTerm) {
     var url = 'http://NflArrest.com/api/v1/crime';
     $('.search_results').append("<strong>Top Crimes in League:</strong>"  + "<br>");
     $.getJSON(url, function (data) {
@@ -110,7 +110,7 @@
           var name = this.Name;
           var date = this.Date;
           var description = this.Description;
-          $('.bottom_panel').append(date + ' - ' + name + ' - ' + description).append('<br>');
+          $('.bottom_panel').append('<p class="indivArrest">'+ date + ' - ' + name + ' - ' + description+'</p>');
         })
       })
     };
